@@ -7,7 +7,7 @@
 	}
 
 	$code = (isset($_GET["code"]) ? $_GET["code"] : '');
-	$row_query = 'SELECT `speciality_name`,`info_id` FROM info1 where uni_index = '.$code.' GROUP BY `speciality_name`';
+	$row_query = 'SELECT `speciality_name`,`info_id` FROM info2 where uni_index = '.$code.' GROUP BY `speciality_name`';
 	$row_result = mysqli_query($conn,$row_query);
 	
 	$options ='';
@@ -24,14 +24,6 @@
 	    $social_life = test_input($_POST["social_life"]);
 	  }
  	}
-	// if(isset($_POST['submit'])){
-	// 	$university_name = 'SELECT DISTINCT university FROM info where code ='.$_POST['specialty'];
-	// 	$uni_result = mysqli_query($conn, $university_name);
-	// 	$university_name =mysqli_fetch_assoc($uni_result);
-	// 	$q = "INSERT INTO survey1 ( university, specialty, social_life, study_load, exchange, work_by_profession) VALUES ('".$university_name['university']."', '',1,1,1,1)";
-	// 	$result = mysqli_query($conn,$q) or die (mysqli_error ($conn));
-		
-	// }
 	
 ?>
 <!DOCTYPE html>
@@ -45,10 +37,12 @@
 <body>
 <form action="end.php" method="post">
 	<div class="select_cont">
-		<select class="custom-select d-block w-100" required="" name='specialty'>
+		<h5 style="color: white;">На какой специальности учились/учитесь?</h5>
+
+		<select class="custom-select d-block w-100" required="" name='specialty' required>
         	<?php echo $options; ?>
     	</select>
-    	<h5 style="color: white;">Какая социальная жизнь? (клубы, концерты, праздники)</h5>
+    	<h5 style="color: white;">Уровень социальной жизни? (клубы, концерты, праздники)</h5>
     	<div class="radio_bttn">
 	    	<label class="radio">
 	    		<input type="radio" name="social_life" <?php if (isset($social_life) && $social_life=="1") echo "checked";?> value="1" required>плохо
@@ -135,9 +129,11 @@
 	    		<span></span>
 	    	</label>
 	    </div>
-	    <div class="div_sub"><input  type="submit" name="submit" class="submit"></input></div>
+	    <div class="div_sub"><button type="submit" name="submit" class="submit">отправить</button></div>
+	    <br><br>
 
 	</div>
 </form>
+
 </body>
 </html>
