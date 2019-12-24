@@ -1,6 +1,6 @@
 <?php
 $conn = mysqli_connect('109.95.210.8', 'u64302_admin', 'Shelek123', 'u64302_survey');
-
+	
 #$query = "SELECT * FROM `info`";
 $charset = 'utf8';
 if(!mysqli_set_charset($conn, $charset)){
@@ -33,6 +33,7 @@ while ($row = mysqli_fetch_array($row_result)) {
 </head>
 <body>
 	<div class="select_cont" id='select_cont'>
+	<br><br><br>
 	<p style="color: white; font-size: 24px; font-style: normal;text-align: center;">В каком вузе учились/учитесь?</p>
 	<br>
 	<form action="survey.php" method="GET">
